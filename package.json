@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react-modal": "^3.10.6",
     "axios": "^0.19.2",
     "filesize": "^6.1.0",
     "history": "^4.10.1",
@@ -10,6 +11,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^10.2.2",
+    "react-icons": "^3.10.0",
+    "react-modal": "^3.11.2",
+    "react-number-format": "^4.4.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.0",

@@ -61,6 +61,15 @@ export const TableContainer = styled.section`
       text-align: left;
       font-size: 16px;
       line-height: 24px;
+
+      button {
+        background: transparent;
+        border: none;
+        color: #FF872C;
+        font: 18px "Poppins", bold;
+
+        
+      }
     }
 
     td {
@@ -70,6 +79,8 @@ export const TableContainer = styled.section`
       font-size: 16px;
       font-weight: normal;
       color: #969cb3;
+     
+      
 
       &.title {
         color: #363f5f;
@@ -82,6 +93,23 @@ export const TableContainer = styled.section`
       &.outcome {
         color: #e83f5b;
       }
+
+      button {
+        background: transparent;
+        border: none;
+        color: red;
+        display: flex;
+        align-items: center;
+
+        & :hover{
+          color: #800000;
+
+        }
+      }
+
+      svg {
+        margin-left: 15px;
+      }
     }
 
     td:first-child {
@@ -93,3 +121,58 @@ export const TableContainer = styled.section`
     }
   }
 `;
+
+export const Form = styled.section`
+  background: transparent;
+  font: 16px "Poppins", sans-serif;
+  color: #363F5F;
+
+ 
+
+  section {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    
+
+    p {
+    margin-left: 10px;
+    }
+
+    select {
+    width: 200px;
+    background: #fff;
+    border-radius: 6px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 5px;
+    font: 14px "Poppins", bold;
+    padding-left: 10px;
+  }
+    input {
+      border: none;
+      padding-left: 10px;
+      width: 200px;
+    background: #fff;
+    border-radius: 6px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 5px;
+    }
+  }
+
+  button {
+    margin-top: 20px;
+    border-radius: 5px;
+    background: #FF872C;
+    border: none;
+    padding: 10px;
+    color: #FFF;
+    font: 16px "Poppins", bold;
+  }
+
+
+
+  
+
+`

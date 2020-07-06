@@ -3,14 +3,17 @@ import React, { useState, useEffect } from 'react';
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
 import total from '../../assets/total.svg';
-
+import { FiTrash,} from 'react-icons/fi'
 import api from '../../services/api';
+import Modal from 'react-modal'
 
 import Header from '../../components/Header';
+import NumberFormat from 'react-number-format';
 
 import formatValue from '../../utils/formatValue';
 
-import { Container, CardContainer, Card, TableContainer } from './styles';
+import { Container, CardContainer, Card, TableContainer, Form } from './styles';
+import { Redirect } from 'react-router-dom';
 
 interface Transaction {
   id: string;
@@ -30,8 +33,15 @@ interface Balance {
 }
 
 const Dashboard: React.FC = () => {
+  const [modalIsOpen,setIsOpen] = React.useState(false);
+
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [balance, setBalance] = useState<Balance>({} as Balance);
+  const [title, setTitle] = useState<string>()
+  const [value, setValue] = useState<string>()
+  const [category, setCategory] = useState<string>()
+  const [type, setType] = useState<string>('income')
+
 
   useEffect(() => {
     async function loadTransactions(): Promise<void> {
@@ -42,7 +52,6 @@ const Dashboard: React.FC = () => {
         income: formatValue(response.data.balance.income),
         outcome: formatValue(response.data.balance.outcome),
         total: formatValue(response.data.balance.total)
-
       }
 
       const transactionsFormatted = response.data.transactions.map(
@@ -61,6 +70,102 @@ const Dashboard: React.FC = () => {
     loadTransactions();
   }, []);
 
+    async function updateTransactions(): Promise<void> {
+      const response = await api.get('/transactions')
+
+      const balanceFormatted = {
+        income: formatValue(response.data.balance.income),
+        outcome: formatValue(response.data.balance.outcome),
+        total: formatValue(response.data.balance.total)
+      }
+      const transactionsFormatted = response.data.transactions.map(
+        (transaction: Transaction) => ({
+          ...transaction,
+          formattedValue: formatValue(transaction.value),
+          formattedDate: new Date(transaction.created_at).toLocaleDateString('pt-br')
+        })
+      )
+
+      setTransactions(transactionsFormatted);
+      setBalance(balanceFormatted);
+
+    }
+
+ 
+
+
+ async function deleteTransaction(id: string): Promise<void> {
+    await api.delete(`/transactions/${id}`)
+    const attTransa = transactions.filter(transaction => transaction.id !== id);
+    updateTransactions()
+    setTransactions(attTransa);    
+
+  }
+
+
+
+  async function handleSubmit(e: React.FormEvent): Promise<void> {
+    e.preventDefault()
+    const data = {
+        title,
+        value,
+        category,
+        type,
+    }
+    await api.post('/transactions', data).then(response => {
+      const aux = response.data;
+      setTransactions ([...transactions, aux])
+      updateTransactions()
+      setIsOpen(false)
+      setTitle('')
+      setValue('')
+      setCategory('')
+    } 
+    
+    
+    )
+  }
+
+  const customStyles = {
+   
+    content : {
+      height: '300px',
+      width: '600px',
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+      transition:  'width 2s, height 2s, transform 2s',
+      background            :  'rgba(252, 255, 245, 0.68)',
+      padding:  '30px',
+      borderRadius: '20px',
+      margin                : 'transparent',
+      outline: 'none',
+      border: 'transparent',
+      overflow: 'hidden',
+      color: 'black', 'text-align': 'center',
+       
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      },
+    overlay : {
+        background            :  'rgba(0, 0, 0, 0.80)',
+        margin                : 'transparent',
+        overflow: 'hidden',
+        outline: 'none',
+        color: '#fff',
+    },
+
+  };
+
+
+function closeModal(){
+  setIsOpen(false);
+}
+
   return (
     <>
       <Header />
@@ -68,21 +173,21 @@ const Dashboard: React.FC = () => {
         <CardContainer>
           <Card>
             <header>
-              <p>Entradas</p>
+              <p>Money Deposit</p>
               <img src={income} alt="Income" />
             </header>
   <h1 data-testid="balance-income">{balance.income}</h1>
           </Card>
           <Card>
             <header>
-              <p>Saídas</p>
+              <p>Cash Withdrawal</p>
               <img src={outcome} alt="Outcome" />
             </header>
             <h1 data-testid="balance-outcome">{balance.outcome}</h1>
           </Card>
           <Card total>
             <header>
-              <p>Total</p>
+              <p>Balance</p>
               <img src={total} alt="Total" />
             </header>
             <h1 data-testid="balance-total">{balance.total}</h1>
@@ -93,10 +198,14 @@ const Dashboard: React.FC = () => {
           <table>
             <thead>
               <tr>
-                <th>Título</th>
-                <th>Preço</th>
-                <th>Categoria</th>
-                <th>Data</th>
+                <th>Title</th>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>
+                  <button onClick={() => {
+                    setIsOpen(true);
+                }}>New</button></th>
               </tr>
             </thead>
 
@@ -110,6 +219,9 @@ const Dashboard: React.FC = () => {
                   </td>
                 <td>{transaction.category.title}</td>
             <td>{transaction.formattedDate}</td>
+            <td>
+              <button onClick={() => {deleteTransaction(transaction.id)}}>
+              <FiTrash size={20}></FiTrash></button></td>
               </tr>
             ))}
              
@@ -117,7 +229,71 @@ const Dashboard: React.FC = () => {
           </table>
         </TableContainer>
       </Container>
+
+      <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Modal"
+        >
+
+        <Form>
+              <h1>New Transaction</h1>
+              <form onSubmit={handleSubmit}>
+              <section>
+              <div>
+                <p>Title</p>
+                <input
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                ></input>
+              </div>
+              <div>
+                <p>Value</p>
+                <NumberFormat 
+                value={value}
+                onChange={e => {
+                const aux = e.target.value
+                const num_array = aux.split(',');
+                const num_string = num_array.join('');  
+                setValue(num_string)
+              }}
+                thousandSeparator={true} 
+                placeholder='US$'
+
+                ></NumberFormat>
+              </div>
+              </section>
+              <section>
+              <div>
+                <p>Category</p>
+                <input
+                value={category}
+                onChange={e => setCategory(e.target.value)}
+                ></input>
+              </div>
+              <div>
+                <p>Type</p>
+                <select
+                value={type}
+                onChange={e => setType(e.target.value)}
+                >
+                  <option value="income">Income</option>
+                  <option value="outcome">Outcome</option>
+                </select>
+              </div>
+              </section>
+              <button type="submit">
+                Create
+              </button>
+              </form>
+              
+              
+        </Form>
+        
+        </Modal>
     </>
+
   );
 };
 
