@@ -6,14 +6,12 @@ import total from '../../assets/total.svg';
 import { FiTrash,} from 'react-icons/fi'
 import api from '../../services/api';
 import Modal from 'react-modal'
-
 import Header from '../../components/Header';
 import NumberFormat from 'react-number-format';
 
 import formatValue from '../../utils/formatValue';
+import { Container, CardContainer, Card, TableContainer, Form, Carde} from './styles';
 
-import { Container, CardContainer, Card, TableContainer, Form } from './styles';
-import { Redirect } from 'react-router-dom';
 
 interface Transaction {
   id: string;
@@ -41,6 +39,10 @@ const Dashboard: React.FC = () => {
   const [value, setValue] = useState<string>()
   const [category, setCategory] = useState<string>()
   const [type, setType] = useState<string>('income')
+  const [inputError, setInputError] = useState('');
+
+
+ 
 
 
   useEffect(() => {
@@ -91,8 +93,6 @@ const Dashboard: React.FC = () => {
 
     }
 
- 
-
 
  async function deleteTransaction(id: string): Promise<void> {
     await api.delete(`/transactions/${id}`)
@@ -103,7 +103,6 @@ const Dashboard: React.FC = () => {
   }
 
 
-
   async function handleSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault()
     const data = {
@@ -112,7 +111,8 @@ const Dashboard: React.FC = () => {
         category,
         type,
     }
-    await api.post('/transactions', data).then(response => {
+    try {
+      const response = await api.post('/transactions', data)
       const aux = response.data;
       setTransactions ([...transactions, aux])
       updateTransactions()
@@ -120,10 +120,9 @@ const Dashboard: React.FC = () => {
       setTitle('')
       setValue('')
       setCategory('')
-    } 
-    
-    
-    )
+    } catch (err) {
+      setInputError('You dont have enough balance!')
+    }
   }
 
   const customStyles = {
@@ -161,14 +160,49 @@ const Dashboard: React.FC = () => {
 
   };
 
+  const customStyles2 = {
+   
+    content : {
+      height: '300px',
+      width: '600px',
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+      transition:  'width 2s, height 2s, transform 2s',
+      background            :  'rgba(252, 255, 245, 245)',
+      padding:  '30px',
+      borderRadius: '20px',
+      margin                : 'transparent',
+      outline: 'none',
+      border: 'transparent',
+      overflow: 'hidden',
+      color: '#FF872C', 'text-align': 'center',
+       
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      },
+    overlay : {
+        background            :  'rgba(0, 0, 0, 0,02)',
+        margin                : 'transparent',
+        overflow: 'hidden',
+        outline: 'none',
+        color: '#fff',
+    },
+
+  };
+
+  
 
 function closeModal(){
   setIsOpen(false);
 }
 
   return (
-    <>
-      <Header />
+  <>
       <Container>
         <CardContainer>
           <Card>
@@ -185,13 +219,13 @@ function closeModal(){
             </header>
             <h1 data-testid="balance-outcome">{balance.outcome}</h1>
           </Card>
-          <Card total>
+          <Carde total>
             <header>
               <p>Balance</p>
               <img src={total} alt="Total" />
             </header>
             <h1 data-testid="balance-total">{balance.total}</h1>
-          </Card>
+          </Carde>
         </CardContainer>
 
         <TableContainer>
@@ -230,6 +264,17 @@ function closeModal(){
         </TableContainer>
       </Container>
 
+      
+      {inputError && <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={() => {closeModal()}}
+      style={customStyles2}
+
+      contentLabel="Modal"
+      >{inputError}
+      
+      </Modal>}
+
       <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
@@ -237,6 +282,7 @@ function closeModal(){
           contentLabel="Modal"
         >
 
+           
         <Form>
               <h1>New Transaction</h1>
               <form onSubmit={handleSubmit}>
@@ -286,9 +332,7 @@ function closeModal(){
               <button type="submit">
                 Create
               </button>
-              </form>
-              
-              
+              </form>                          
         </Form>
         
         </Modal>

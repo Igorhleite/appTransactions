@@ -3,18 +3,27 @@ import styled from 'styled-components';
 interface ContainerProps {
   size?: 'small' | 'large';
 }
-
+export const Theme = styled.div`
+position: absolute;
+top:80px;
+left:20px;
+`
 export const Container = styled.div<ContainerProps>`
-  background: #5636d3;
+  background: ${props => props.theme.colors.primary};
   padding: 30px 0;
+
+
+  
 
   header {
     width: 1120px;
     margin: 0 auto;
-    padding: ${({ size }) => (size === 'small' ? '0 20px ' : '0 20px 150px')};
+    padding: 0 20px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+  
 
     nav {
       a {

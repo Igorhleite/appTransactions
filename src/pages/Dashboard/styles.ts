@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 interface CardProps {
   total?: boolean;
 }
@@ -8,7 +10,8 @@ export const Container = styled.div`
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 40px 20px;
+  margin-top: 80px;
+  padding: 60px 20px;
 `;
 
 export const Title = styled.h1`
@@ -23,8 +26,34 @@ export const CardContainer = styled.section`
   margin-top: -150px;
 `;
 
+
+export const Carde = styled.div`
+  background: ${props => props.theme.colors.secundary};
+  padding: 22px 32px;
+  border-radius: 5px;
+  color: ${({ total }: CardProps): string => (total ? '#fff' : '#363F5F')};
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  h1 {
+    margin-top: 14px;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 54px;
+  }
+`
+
+
 export const Card = styled.div`
-  background: ${({ total }: CardProps): string => (total ? '#FF872C' : '#fff')};
+
+  background: #fff;
   padding: 22px 32px;
   border-radius: 5px;
   color: ${({ total }: CardProps): string => (total ? '#fff' : '#363F5F')};
@@ -51,13 +80,14 @@ export const TableContainer = styled.section`
   margin-top: 64px;
 
   table {
+    padding-top: -60px;
     width: 100%;
     border-spacing: 0 8px;
 
     th {
-      color: #969cb3;
+      color: ${props => props.theme.colors.text};
       font-weight: normal;
-      padding: 20px 32px;
+      padding: 10px 32px;
       text-align: left;
       font-size: 16px;
       line-height: 24px;
@@ -65,7 +95,7 @@ export const TableContainer = styled.section`
       button {
         background: transparent;
         border: none;
-        color: #FF872C;
+        color: ${props => props.theme.colors.secundary};
         font: 18px "Poppins", bold;
 
         
@@ -97,12 +127,12 @@ export const TableContainer = styled.section`
       button {
         background: transparent;
         border: none;
-        color: red;
+        color: ${props => props.theme.colors.secundary};
         display: flex;
         align-items: center;
 
         & :hover{
-          color: #800000;
+          color: ${props => props.theme.colors.primary};
 
         }
       }
@@ -143,11 +173,13 @@ export const Form = styled.section`
     width: 200px;
     background: #fff;
     border-radius: 6px;
+    border: none;
     height: 40px;
     margin-left: 10px;
     margin-top: 5px;
+    color: #363F5F;
     font: 14px "Poppins", bold;
-    padding-left: 10px;
+    padding: 0 10px 0 10px;
   }
     input {
       border: none;
@@ -158,21 +190,18 @@ export const Form = styled.section`
     height: 40px;
     margin-left: 10px;
     margin-top: 5px;
+    color: #363F5F;
+
     }
   }
 
   button {
     margin-top: 20px;
     border-radius: 5px;
-    background: #FF872C;
+    background: ${props => props.theme.colors.secundary};
     border: none;
     padding: 10px;
     color: #FFF;
     font: 16px "Poppins", bold;
-  }
-
-
-
-  
-
+  }  
 `

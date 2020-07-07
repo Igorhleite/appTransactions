@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom'
 
-import { Container } from './styles';
+import { Container, Theme } from './styles';
 
 import Logo from '../../assets/logo.svg';
+import Switch from 'react-switch'
+import { ThemeContext } from 'styled-components'
+import { shade } from 'polished'
 
 interface HeaderProps {
-  size?: 'small' | 'large';
-}
+  toggleTheme(): void;   
+  }
 
-const Header: React.FC<HeaderProps> = ({ size = 'large' }: HeaderProps) => (
-  <Container size={size}>
+
+const Header: React.FC<HeaderProps> = ({toggleTheme}) => {
+  const { colors, title } = useContext(ThemeContext)
+
+  
+
+  return (
+  
+  <Container>
     <header>
-      <img src={Logo} alt="GoFinances" />
+      <img  src={colors.logo} alt="GoFinances" />
       <nav>
+        <Theme>
+        <Switch onChange={toggleTheme}
+          checked={title === 'dark'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          offColor={colors.secundary}
+          onColor={colors.secundary}
         
+        /></Theme>
         <Link to="/"> Transactions </Link>
         <Link to="/import"> Import </Link>
 
@@ -25,5 +43,5 @@ const Header: React.FC<HeaderProps> = ({ size = 'large' }: HeaderProps) => (
     </header>
   </Container>
 );
-
+  }
 export default Header;
