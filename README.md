@@ -77,46 +77,29 @@ With all dependencies installed and the environment properly configured, you can
 
 ![Preview-Screens](https://s7.gifyu.com/images/ezgif.com-video-to-gif-1beeba831f9ae9046.gif)
 
+2 - You can add several transitions at once, via a CVS file, an example file is available [here](https://www.4shared.com/s/fPFyJf5G5ea).
+ 
+![Preview-Screens](https://s7.gifyu.com/images/ezgif.com-video-to-gif-1beeba831f9ae9046.gif)
+
 
 
 
 
 ## Built With
 
-- [React-Native](https://facebook.github.io/react-native/) - Build the native app using JavaScript and React
-- [React-Navigation](https://reactnavigation.org/docs/en/getting-started.html) - Router
-- [Redux](https://redux.js.org/) - React State Manager
-- [Redux-Saga](https://redux-saga.js.org/) - Side-Effect middleware for Redux
-- [Axios](https://github.com/axios/axios) - HTTP Client
-- [ESlint](https://eslint.org/) - Linter
-- [React-Native-Dotenv](https://github.com/zetachang/react-native-dotenv) - Configs from .env file
-- [Flow](https://redux-saga.js.org/) - Static Type Checker
-- [Prettier](https://prettier.io/) - Code Formatter
-- [Babel](https://babeljs.io/) - JavaScript Compiler
-- [Reactotron](https://infinite.red/reactotron) - Inspector
-- [Styled-Components](https://www.styled-components.com/) - Styles
-- [React-Native-Fast-Image](https://github.com/DylanVann/react-native-fast-image) - Image Loader
-- [React-Native-Linear-Gradient](https://github.com/react-native-community/react-native-linear-gradient) - Gradient Styles
-- [React-Native-SplashScreen](https://github.com/crazycodeboy/react-native-splash-screen) - Splashscreen of the App
-- [React-Native-Vector-Icons](https://github.com/oblador/react-native-vector-icons) - Icons
-- [React-Native-Side-Menu](https://github.com/react-native-community/react-native-side-menu) - Side Menu used on Player screen
-- [React-Native-Swipeout](https://github.com/dancormier/react-native-swipeout) - Swipe for edit/remove playlists and remove podcasts inside some playlist
-- [React-Native-Video](https://github.com/react-native-community/react-native-video) - Consume the audio files via streaming
-- [React-Native-FS](https://github.com/itinance/react-native-fs) - Handle download/undownload podcasts on file-system
-
-
-## Support tools
-
-- [Image-Resize](https://imageresize.org) - Resize the Images
-- [Amazon S3](https://aws.amazon.com/pt/s3/) - Storage Service
+- [React](https://github.com/facebook/react) - Build the native app using JavaScript and React.
+- [Typescript](https://www.typescriptlang.org/docs/handbook/react.html) - TypeScript brings static type-checking along with the latest ECMAScript features.
+- [React-Router-Dom](https://reactrouter.com/web/guides/quick-start) - Router.
+- [React-Modal](https://www.npmjs.com/package/react-modal) - offers a simple implementation Modal.
+- [React-Dropzone](https://react-dropzone.js.org/) - Simple React hook to create a HTML5-compliant drag'n'drop zone for files.
+- [Styled-Components](https://github.com/axios/axios) - Use the best bits of ES6 and CSS to style your apps without stress.
+- [ESlint](https://eslint.org/) - Linter.
 
 ## Contributing
 
 You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project...
 
-Email-me: stenio.wagner1@gmail.com
-
-Connect with me at [LinkedIn](https://www.linkedin.com/in/steniowagner/)
+Connect with me at [LinkedIn](https://www.linkedin.com/in/igorhl/).
 
 Thank you!
 
