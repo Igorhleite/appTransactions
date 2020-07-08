@@ -1,87 +1,201 @@
-# Go Finances
 
-One Paragraph of project description goes here
+
+
+# App Transaction
+
+![Preview-Screens](https://s7.gifyu.com/images/ezgif.com-video-to-gif22e5e46fd275a2aa.gif)
+
+This application has dark mode.🧛
+
+## About this Project
+
+The idea of the App is:
+
+_"Control your spending in an elegant and organized way."._
+
+
+**GoStack 🤩:** The idea for this app was a challenge for the GoStack bootcamp (Rocketseat 🚀).
+
+## Why?
+
+This project is part of a process for improving and learning the quality of my TypeScript codes, feel free to send feedback on the implementations made.
+
+Connect with me at [LinkedIn](https://www.linkedin.com/in/igorhl/).
+
+You can use this Project as you wish, be for study!
+
+## Some Observations about this App
+
+1 - There's no functionality of Login/Register, the buttons and the forms in the Login Screen are only for UI matters.
+
+2 - The only option that works at _Settings_ screen it's toggle the Dark/Light theme, all the others are just for UI matters too.
+
+## Installers
+
+If you want to test the App in the Production mode, the installers are listed below:
+
+[Android .apk installer](https://drive.google.com/file/d/1LKgdu1WDPo8eU2NVjoB92TPi4my8QP4D/view?usp=sharing)
+
+iOS .ipa installer: Soon!
+
+## Functionalities
+
+- Choose your interests (all, technology, philosophy, science, business, pop-culture or history - it will be used to make requests in order to have a personalized app with what the user want to hear about)
+
+- Get informations about a specific Author, with his New Releases/Featured Podcats and Related Authors
+
+- Get Informations about a specific Podcast, with its description and Author
+
+- Listen and download a single podcasts to listen offline (no need to create a playlist)
+
+- Playlists
+	- Create, Edit and Remove your Playlists
+	- Download Playlists to listen when the user goes offline
+	- Undownload Playlists
+
+- Player to listen the selected podcasts and also be able to: 
+	- Shuffle Playlist
+	- Repeat Playist
+	- Repeat a single Podcast
+	- Download the current podcast
+	- Add the current Podcast to a Playlist
+	- Access the queue of next podcasts that will be played
+	- Remove podcasts from the queue
+	- Play/Pause the current Podcast
+	- Next/Previous podcast on the Playlist
+
+- Bottom Player
+	- Access the bottom player out of the Player screen in order to keep tracking the current podcast
+	- Get the Author and the Title of the current podcast
+	- Play/Pause/Forward the current podcast
+	- Track the timer of the current podcast
+
+- Discover
+	- A Dashboard with:
+	  - Trending Authors
+	  - Hottest Podcasts
+	  - New Podcasts Released
+
+- Search
+
+	- Search for Authors by name
+
+	- Get information about a certain category, showing it's featured and trending podcats, and the authors that talk about this category
+
+- Library
+	- Create Playlists, add podcasts and download it to listen offline
+
+	- Access Your Podcasts (Downloaded + Podcasts saved on your Playlists) in the form of playlist
+
+	- Access your Podcasts downloaded in the form of playlist
+	
+	- Access recently played podcasts in the form of playlist
+
+	- Change your interests
+
+- Settings
+
+	- Choose between the Dark and Light theme
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
+To run this project in the development mode, you'll need to have a basic environment to run a React-Native App, that can be found [here](https://facebook.github.io/react-native/docs/getting-started).
 
-```
-Give examples
-```
+Also, you'll need to the server running locally on your machine with the mock data. You can find the server and all the instructions to start the server [here](https://github.com/steniowagner/mindcast-server).
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+**Cloning the Repository**
 
 ```
-Give the example
+$ git clone https://github.com/steniowagner/mindCast
+
+$ cd mindCast
 ```
 
-And repeat
+**Installing dependencies**
 
 ```
-until finished
+$ yarn
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+_or_
 
 ```
-Give an example
+$ npm install
 ```
 
-### And coding style tests
+### Connecting the App with the Server
 
-Explain what these tests test and why
+1 - Follow the instructions on the [mindcast-server](https://github.com/steniowagner/mindcast-server) to have the server up and running on your machine.
+
+2 - With the server up and running, go to the [/.env.development](https://github.com/steniowagner/mindCast/blob/master/.env.development) file and edit the SERVER_URL value for the IP of your machine (you can have some issues with _localhost_ if you're running on an android physical device, but you can use localhost safely on iOS).
+
+It should looks like this:
+
+SERVER_URL=http://**_IP_OF_YOUR_MACHINE_**:3001/mind-cast/api/v1
+
+*or*
+
+SERVER_URL=http://localhost:3001/mind-cast/api/v1
+
+### Running
+
+With all dependencies installed and the environment properly configured, you can now run the app:
+
+Android
 
 ```
-Give an example
+$ react-native run-android
 ```
 
-## Deployment
+iOS
 
-Add additional notes about how to deploy this on a live system
+```
+$ react-native run-ios
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+- [React-Native](https://facebook.github.io/react-native/) - Build the native app using JavaScript and React
+- [React-Navigation](https://reactnavigation.org/docs/en/getting-started.html) - Router
+- [Redux](https://redux.js.org/) - React State Manager
+- [Redux-Saga](https://redux-saga.js.org/) - Side-Effect middleware for Redux
+- [Axios](https://github.com/axios/axios) - HTTP Client
+- [ESlint](https://eslint.org/) - Linter
+- [React-Native-Dotenv](https://github.com/zetachang/react-native-dotenv) - Configs from .env file
+- [Flow](https://redux-saga.js.org/) - Static Type Checker
+- [Prettier](https://prettier.io/) - Code Formatter
+- [Babel](https://babeljs.io/) - JavaScript Compiler
+- [Reactotron](https://infinite.red/reactotron) - Inspector
+- [Styled-Components](https://www.styled-components.com/) - Styles
+- [React-Native-Fast-Image](https://github.com/DylanVann/react-native-fast-image) - Image Loader
+- [React-Native-Linear-Gradient](https://github.com/react-native-community/react-native-linear-gradient) - Gradient Styles
+- [React-Native-SplashScreen](https://github.com/crazycodeboy/react-native-splash-screen) - Splashscreen of the App
+- [React-Native-Vector-Icons](https://github.com/oblador/react-native-vector-icons) - Icons
+- [React-Native-Side-Menu](https://github.com/react-native-community/react-native-side-menu) - Side Menu used on Player screen
+- [React-Native-Swipeout](https://github.com/dancormier/react-native-swipeout) - Swipe for edit/remove playlists and remove podcasts inside some playlist
+- [React-Native-Video](https://github.com/react-native-community/react-native-video) - Consume the audio files via streaming
+- [React-Native-FS](https://github.com/itinance/react-native-fs) - Handle download/undownload podcasts on file-system
+
+
+## Support tools
+
+- [Image-Resize](https://imageresize.org) - Resize the Images
+- [Amazon S3](https://aws.amazon.com/pt/s3/) - Storage Service
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project...
 
-## Versioning
+Email-me: stenio.wagner1@gmail.com
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Connect with me at [LinkedIn](https://www.linkedin.com/in/steniowagner/)
 
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Thank you!
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/steniowagner/mindCast/blob/master/LICENSE) file for details
