@@ -5,7 +5,7 @@
 
 ![Preview-Screens](https://s7.gifyu.com/images/ezgif.com-video-to-gif22e5e46fd275a2aa.gif)
 
-This application has dark mode.🧛
+This app has dark mode.🧛
 
 ## About this Project
 
@@ -26,93 +26,29 @@ You can use this Project as you wish, be for study!
 
 ## Some Observations about this App
 
-1 - There's no functionality of Login/Register, the buttons and the forms in the Login Screen are only for UI matters.
+1 - The initial part of the app was developed during the bootcamp.
 
-2 - The only option that works at _Settings_ screen it's toggle the Dark/Light theme, all the others are just for UI matters too.
-
-## Installers
-
-If you want to test the App in the Production mode, the installers are listed below:
-
-[Android .apk installer](https://drive.google.com/file/d/1LKgdu1WDPo8eU2NVjoB92TPi4my8QP4D/view?usp=sharing)
-
-iOS .ipa installer: Soon!
-
-## Functionalities
-
-- Choose your interests (all, technology, philosophy, science, business, pop-culture or history - it will be used to make requests in order to have a personalized app with what the user want to hear about)
-
-- Get informations about a specific Author, with his New Releases/Featured Podcats and Related Authors
-
-- Get Informations about a specific Podcast, with its description and Author
-
-- Listen and download a single podcasts to listen offline (no need to create a playlist)
-
-- Playlists
-	- Create, Edit and Remove your Playlists
-	- Download Playlists to listen when the user goes offline
-	- Undownload Playlists
-
-- Player to listen the selected podcasts and also be able to: 
-	- Shuffle Playlist
-	- Repeat Playist
-	- Repeat a single Podcast
-	- Download the current podcast
-	- Add the current Podcast to a Playlist
-	- Access the queue of next podcasts that will be played
-	- Remove podcasts from the queue
-	- Play/Pause the current Podcast
-	- Next/Previous podcast on the Playlist
-
-- Bottom Player
-	- Access the bottom player out of the Player screen in order to keep tracking the current podcast
-	- Get the Author and the Title of the current podcast
-	- Play/Pause/Forward the current podcast
-	- Track the timer of the current podcast
-
-- Discover
-	- A Dashboard with:
-	  - Trending Authors
-	  - Hottest Podcasts
-	  - New Podcasts Released
-
-- Search
-
-	- Search for Authors by name
-
-	- Get information about a certain category, showing it's featured and trending podcats, and the authors that talk about this category
-
-- Library
-	- Create Playlists, add podcasts and download it to listen offline
-
-	- Access Your Podcasts (Downloaded + Podcasts saved on your Playlists) in the form of playlist
-
-	- Access your Podcasts downloaded in the form of playlist
-	
-	- Access recently played podcasts in the form of playlist
-
-	- Change your interests
-
-- Settings
-
-	- Choose between the Dark and Light theme
+2 - Additional implementations: adding new transactions, removing transactions, dark mode were implemented later.
 
 ## Getting Started
 
 ### Prerequisites
 
-To run this project in the development mode, you'll need to have a basic environment to run a React-Native App, that can be found [here](https://facebook.github.io/react-native/docs/getting-started).
+To run this project in the development mode, you'll need:
 
-Also, you'll need to the server running locally on your machine with the mock data. You can find the server and all the instructions to start the server [here](https://github.com/steniowagner/mindcast-server).
+Have a basic environment to run a React App, that can be found [here](https://github.com/facebook/react).
+
+Also, you'll need to the server running locally on your machine  You can find the server and all the instructions to start the server [here](https://github.com/facebook/react).
+
 
 ### Installing
 
 **Cloning the Repository**
 
 ```
-$ git clone https://github.com/steniowagner/mindCast
+$ git clone https://github.com/Igorhleite/appTransactions
 
-$ cd mindCast
+$ cd appTransactions
 ```
 
 **Installing dependencies**
@@ -131,31 +67,19 @@ $ npm install
 
 1 - Follow the instructions on the [mindcast-server](https://github.com/steniowagner/mindcast-server) to have the server up and running on your machine.
 
-2 - With the server up and running, go to the [/.env.development](https://github.com/steniowagner/mindCast/blob/master/.env.development) file and edit the SERVER_URL value for the IP of your machine (you can have some issues with _localhost_ if you're running on an android physical device, but you can use localhost safely on iOS).
 
-It should looks like this:
-
-SERVER_URL=http://**_IP_OF_YOUR_MACHINE_**:3001/mind-cast/api/v1
-
-*or*
-
-SERVER_URL=http://localhost:3001/mind-cast/api/v1
 
 ### Running
 
-With all dependencies installed and the environment properly configured, you can now run the app:
+With all dependencies installed and the environment properly configured, you can now test the app:
 
-Android
+1 - Add new transactions by clicking on the "New" button:
 
-```
-$ react-native run-android
-```
+![Preview-Screens](https://s7.gifyu.com/images/ezgif.com-video-to-gif-1beeba831f9ae9046.gif)
 
-iOS
 
-```
-$ react-native run-ios
-```
+
+
 
 ## Built With
 
