@@ -97,7 +97,7 @@ With all dependencies installed and the environment properly configured, you can
 
 ## Contributing
 
-You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project...
+If you have any question about the project...
 
 Connect with me at [LinkedIn](https://www.linkedin.com/in/igorhl/).
 
