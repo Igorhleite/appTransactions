@@ -38,7 +38,8 @@ To run this project in the development mode, you'll need:
 
 Have a basic environment to run a React App, that can be found [here](https://github.com/facebook/react).
 
-Also, you'll need to the server running locally on your machine  You can find the server and all the instructions to start the server [here](https://github.com/facebook/react).
+
+Also, you'll need to the server running locally on your machine  You can find the server [here](https://github.com/Igorhleite/gostackcodes/tree/master/desafio_gostack_nodeJS02(Finances)).
 
 
 ### Installing
