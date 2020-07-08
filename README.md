@@ -79,7 +79,7 @@ With all dependencies installed and the environment properly configured, you can
 
 2 - You can add several transitions at once, via a CVS file, an example file is available [here](https://www.4shared.com/s/fPFyJf5G5ea).
  
-![Preview-Screens](https://s7.gifyu.com/images/ezgif.com-video-to-gif-1beeba831f9ae9046.gif)
+![Preview-Screens](https://s7.gifyu.com/images/simplescreenrecorder-2020-07-08_12.24.07.gif)
 
 
 
