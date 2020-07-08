@@ -66,7 +66,7 @@ $ npm install
 
 ### Connecting the App with the Server
 
-1 - Follow the instructions on the [mindcast-server](https://github.com/steniowagner/mindcast-server) to have the server up and running on your machine.
+Have the server running on your machine, the server is present [here](https://github.com/Igorhleite/gostackcodes/tree/master/desafio_gostack_nodeJS02(Finances)).
 
 
 
